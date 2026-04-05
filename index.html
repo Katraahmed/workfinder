@@ -1,171 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kenya Online Jobs Finder</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f4f8;
-    margin: 0;
-    padding: 0;
-  }
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-top: 30px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KenyaAfrica WorkFinder</title>
+    <style>
+        /* BOLD MODERN STYLES */
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #1a1a1a; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 15px; 
+            background-color: #e9ecef; 
+        }
+        
+        /* HUGE EYE-CATCHING HEADER */
+        .header { 
+            text-align: center; 
+            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%); 
+            color: white; 
+            padding: 50px 20px; 
+            border-radius: 20px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .header h1 { 
+            font-size: 3rem; 
+            margin: 0; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+        }
+        .header p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
 
-  /* Modal styles */
-  #modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  #modalContent {
-    background: #fff;
-    padding: 30px;
-    max-width: 500px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  }
-  #modalContent p {
-    font-size: 16px;
-    color: #900;
-    margin-bottom: 20px;
-  }
-  #modalContent button {
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #modalContent button:hover {
-    background: #0056b3;
-  }
+        /* BOLD SAFETY BOX */
+        .safety-box { 
+            background: #fff3cd; 
+            border: 4px solid #ffc107; 
+            padding: 25px; 
+            border-radius: 15px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .safety-box h2 { color: #856404; margin-top: 0; font-size: 1.5rem; }
+        .safety-box li { margin-bottom: 10px; font-weight: bold; }
 
-  /* Jobs container */
-  #jobs {
-    max-width: 900px;
-    margin: 30px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
+        /* LARGE JOB CARDS */
+        .job-card { 
+            background: white; 
+            padding: 30px; 
+            margin-bottom: 20px; 
+            border-radius: 15px; 
+            border-left: 10px solid #28a745; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .job-card:hover { transform: scale(1.02); }
+        .job-card h3 { font-size: 1.8rem; margin: 0 0 10px 0; color: #0056b3; }
+        .job-card p { font-size: 1.1rem; color: #555; }
 
-  /* Job card */
-  .job {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .job:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  }
-  .job h3 {
-    color: #007BFF;
-    margin-top: 0;
-  }
-  .job p {
-    margin: 5px 0;
-    color: #555;
-  }
-  .job a {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #fff;
-    background: #28a745;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background 0.2s;
-  }
-  .job a:hover {
-    background: #218838;
-  }
-  .job .warning {
-    color: red;
-    font-weight: bold;
-  }
+        /* BIG BUTTONS FOR PHONES */
+        .btn { 
+            display: inline-block; 
+            background: #28a745; 
+            color: white; 
+            padding: 15px 35px; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn:hover { background: #218838; }
 
-</style>
+        .m-pesa-tag { 
+            background: #e8f5e9; 
+            color: #2e7d32; 
+            padding: 5px 12px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+        }
+    </style>
 </head>
 <body>
 
-<h1>Online Jobs Available for Kenya</h1>
+    <div class="header">
+        <h1>🇰🇪 KenyaAfrica</h1>
+        <p>THE #1 HUB FOR GUARANTEED ONLINE JOBS</p>
+    </div>
 
-<!-- Modal for safety precaution -->
-<div id="modal">
-  <div id="modalContent">
-    <p>⚠️ Warning: Do not pay money for any job application. Legitimate jobs never ask for fees or verification codes that never arrive. Stay safe and avoid scams!</p>
-    <button onclick="closeModal()">I Understand</button>
-  </div>
-</div>
+    <div class="safety-box">
+        <h2>⚠️ STOP! READ BEFORE APPLYING</h2>
+        <ul>
+            <li>DO NOT PAY any "registration fees" (300/- , 500/-). It is a SCAM!</li>
+            <li>Real employers will never ask for your M-PESA PIN.</li>
+            <li>We only list verified sites that actually pay.</li>
+        </ul>
+    </div>
 
-<!-- Jobs container -->
-<div id="jobs">Loading jobs...</div>
+    <div class="job-card">
+        <span class="m-pesa-tag">PAYS VIA M-PESA</span>
+        <h3>Mobiworkx Kenya</h3>
+        <p>Earn cash and airtime by answering simple questions on your phone. Perfect for quick daily earnings.</p>
+        <a href="https://www.mobiworkx.com/" class="btn" target="_blank">GET STARTED NOW →</a>
+    </div>
 
-<script>
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
+    <div class="job-card">
+        <span class="m-pesa-tag">DOLLAR EARNINGS</span>
+        <h3>SproutGigs Tasks</h3>
+        <p>Get paid for small digital tasks like liking pages or following accounts. No specialized skills needed!</p>
+        <a href="https://sproutgigs.com/" class="btn" target="_blank">START TASKS →</a>
+    </div>
 
-// Fetch jobs from RemoteOK API
-async function fetchJobs() {
-  try {
-    const response = await fetch('https://remoteok.com/api');
-    const data = await response.json();
+    <div class="job-card">
+        <span class="m-pesa-tag">GOVT VERIFIED</span>
+        <h3>Kujia TechJobs</h3>
+        <p>Official Kenyan portal for digital work. Safest way to find long-term remote opportunities.</p>
+        <a href="https://kujia.or.ke/techjobs/" class="btn" target="_blank">BROWSE JOBS →</a>
+    </div>
 
-    const jobsContainer = document.getElementById('jobs');
-    jobsContainer.innerHTML = ''; // Clear loading text
-
-    data.forEach(job => {
-      if ((job.countries && job.countries.includes("Kenya")) || job.remote) {
-
-        // Flag suspicious jobs
-        let warningText = '';
-        if (job.description && /pay|money|fee|code/i.test(job.description)) {
-          warningText = '<p class="warning">Potential scam: Check carefully before applying!</p>';
-        }
-
-        const jobDiv = document.createElement('div');
-        jobDiv.className = 'job';
-        jobDiv.innerHTML = `
-          <h3>${job.position}</h3>
-          <p>Company: ${job.company}</p>
-          <p>Location: ${job.location || 'Remote'}</p>
-          ${warningText}
-          <a href="${job.url}" target="_blank">Apply Now</a>
-        `;
-        jobsContainer.appendChild(jobDiv);
-      }
-    });
-
-  } catch (error) {
-    document.getElementById('jobs').innerHTML = 'Failed to load jobs. Try again later.';
-    console.error(error);
-  }
-}
-
-// Load jobs when page is ready
-fetchJobs();
-</script>
+    <footer style="text-align: center; margin-top: 50px; color: #777;">
+        <p>© 2026 KenyaAfrica IT Solutions | Nairobi, Kenya</p>
+    </footer>
 
 </body>
 </html>
-
