@@ -1,72 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KenyaAfrica | 100% Free Job Hub</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 1000px; margin: 0 auto; padding: 15px; background-color: #f0f4f8; }
-        .header { text-align: center; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 60px 20px; border-radius: 20px; margin-bottom: 30px; }
-        .header h1 { font-size: 3rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        .safety-box { background: #fff3cd; border: 4px solid #ffc107; padding: 25px; border-radius: 15px; margin-bottom: 35px; }
-        .section-header { font-size: 1.8rem; color: #1e3c72; border-left: 10px solid #1e3c72; padding-left: 15px; margin: 40px 0 20px 0; background: white; padding: 10px; border-radius: 0 10px 10px 0; }
-        .job-card { background: white; padding: 30px; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; }
-        .job-card h3 { font-size: 1.8rem; margin: 10px 0; color: #1e3c72; }
-        .btn { display: inline-block; background: #28a745; color: white; padding: 15px 35px; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 1.1rem; margin-top: 15px; }
-        .tag { background: #e2e8f0; color: #475569; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenya Legit Jobs</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+}
+header {
+  background: #0a66c2;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: #083d77;
+  padding: 10px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.safety {
+  background: #ffdddd;
+  color: #a00;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+.search-box {
+  text-align: center;
+  margin: 20px;
+}
+.search-box input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+.category {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.jobs {
+  padding: 20px;
+}
+.job-card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.verified { background: #d4edda; color: #155724; }
+.free { background: #cce5ff; color: #004085; }
+button {
+  padding: 8px 12px;
+  border: none;
+  background: #0a66c2;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #083d77;
+  color: white;
+}
+</style>
 </head>
-<body>
+<body><header>
+  <h1>Kenya Legit Jobs</h1>
+  <p>Find real jobs in Kenya — no fees, no scams</p>
+</header><nav>
+  <a href="#">Home</a>
+  <a href="#">Jobs</a>
+  <a href="#">Contact</a>
+</nav><div class="safety">
+  ⚠️ SAFETY NOTICE: All jobs listed here are FREE to apply. Do NOT pay any money. If asked for payment, it is a SCAM.
+</div><div class="search-box">
+  <input type="text" id="search" placeholder="Search jobs..." onkeyup="searchJobs()">
+</div><div class="categories">
+  <div class="category">💻 Online (No Skills)</div>
+  <div class="category">🧠 Skilled Jobs</div>
+  <div class="category">🧾 Part-Time</div>
+  <div class="category">🎓 Student Jobs</div>
+</div><div class="jobs" id="jobList"></div><footer>
+  <p>© 2026 Kenya Legit Jobs | Report scams anytime</p>
+</footer><script>
+const jobs = [
+  {title: "Data Entry Clerk", company: "RemoteTasks", type: "No Skills"},
+  {title: "Online Survey Taker", company: "Clickworker", type: "No Skills"},
+  {title: "Virtual Assistant", company: "Microworkers", type: "No Skills"},
+  {title: "Web Designer", company: "Upwork", type: "Skilled"},
+  {title: "Graphic Designer", company: "Fiverr", type: "Skilled"},
+  {title: "Shop Assistant", company: "Local Store Nairobi", type: "Local"},
+  {title: "Restaurant Helper", company: "City Cafe", type: "Local"}
+];
 
-    <div class="header">
-        <h1>🌍 KENYAAFRICA</h1>
-        <p>VERIFIED ONLINE JOBS • NO REGISTRATION FEES • KENYA 2026</p>
-    </div>
+function displayJobs(list) {
+  const container = document.getElementById("jobList");
+  container.innerHTML = "";
 
-    <div class="safety-box">
-        <h2 style="margin-top:0; color: #856404;">⚠️ NO SCAM & NO ERROR PROMISE</h2>
-        <ul style="font-size: 1.1rem; font-weight: bold;">
-            <li>NOT AVAILABLE ERROR? We have removed the sites that block Kenya.</li>
-            <li>ZERO FEES: Every job on this list is 100% free to join.</li>
-            <li>M-PESA: We prioritize jobs that work with Kenyan payment systems.</li>
-        </ul>
-    </div>
+  list.forEach(job => {
+    container.innerHTML += `
+      <div class="job-card">
+        <h3>${job.title}</h3>
+        <p>${job.company}</p>
+        <span class="badge verified">Verified</span>
+        <span class="badge free">No Payment</span>
+        <br><br>
+        <button onclick="alert('Apply through official website')">Apply</button>
+      </div>
+    `;
+  });
+}
 
-    <div class="section-header">⭐ Type 1: Easy Jobs (No Skills Needed)</div>
-    
-    <div class="job-card">
-        <span class="tag">Africa Focused</span>
-        <h3>SagaPoll</h3>
-        <p>A leading survey app built specifically for Africa. It is highly active in Kenya right now. Earn points for your opinion and cash out via M-Pesa or Airtime.</p>
-        <a href="https://sagapoll.com/" class="btn" target="_blank">Join SagaPoll →</a>
-    </div>
+function searchJobs() {
+  const input = document.getElementById("search").value.toLowerCase();
+  const filtered = jobs.filter(job => job.title.toLowerCase().includes(input));
+  displayJobs(filtered);
+}
 
-    <div class="job-card">
-        <span class="tag">Global Micro-Tasks</span>
-        <h3>SproutGigs</h3>
-        <p>Complete international tasks like liking posts or testing websites. They accept Kenyan workers and pay in Dollars ($) via PayPal or Litecoin.</p>
-        <a href="https://sproutgigs.com/" class="btn" target="_blank">Start Working Now →</a>
-    </div>
-
-    <div class="job-card">
-        <span class="tag">AI Training</span>
-        <h3>Clickworker</h3>
-        <p>Help train AI models by doing small data entry or photo tasks. Verified to pay Kenyan workers an average of 125 KES per hour.</p>
-        <a href="https://www.clickworker.com/clickworker/" class="btn" target="_blank">Register Here →</a>
-    </div>
-
-    <div class="section-header">🚀 Type 2: Skilled Professional Jobs</div>
-    
-    <div class="job-card">
-        <span class="tag">Kenyan Freelancing</span>
-        <h3>WorkKE</h3>
-        <p>The best place for local writing and IT gigs. <strong>Sign up as a "Freelancer"</strong> to offer your services to clients paying in M-Pesa.</p>
-        <a href="https://www.workke.co.ke/" class="btn" style="background: #6f42c1;" target="_blank">Find Local Work →</a>
-    </div>
-
-    <footer style="text-align: center; margin-top: 50px; color: #777;">
-        <p>© 2026 KenyaAfrica IT Solutions | Nairobi, Kenya</p>
-    </footer>
-
-</body>
+// Load jobs on start
+displayJobs(jobs);
+</script></body>
 </html>
+
